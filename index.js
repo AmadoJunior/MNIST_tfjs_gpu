@@ -105,8 +105,10 @@ const { Console } = require('console');
         //Get Stored Model
         const model = await tf.loadLayersModel('file://myModel1/model.json');
         //Get Data Predictions/Test Answers
-        const yPred = await model.predict(xsTests).argMax(-1).dataSync();
-        const yTrue = ysTests.argMax(-1).dataSync();
+        //argMax(): Returns the indices of the maximum values of a tensor along axis
+        //The result has the same shape as input with the dimension along axis removed.
+        const yPred = await model.predict(xsTests).argMax(1).dataSync();
+        const yTrue = ysTests.argMax(1).dataSync();
         console.log(yPred);
         console.log(yTrue);
 
@@ -135,8 +137,8 @@ const { Console } = require('console');
     // console.log(ys.dataSync());
     // console.log(ysTests.dataSync());
 
-    await trainModel(xs, ys, xsTests, ysTests);
+    //await trainModel(xs, ys, xsTests, ysTests);
 
-    //await doPrediction(xsTests, ysTests);
+    await doPrediction(xsTests, ysTests);
 
 })();
