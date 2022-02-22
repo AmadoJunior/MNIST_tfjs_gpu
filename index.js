@@ -23,7 +23,7 @@ const { Console } = require('console');
             yTrains.push(parseInt(values[0]));
             xTrains[i] = [];
             for(let j = 1; j < values.length; j++){
-                xTrains[i].push(parseInt(values[j]));
+                xTrains[i].push((parseInt(values[j])-127)/127);
             }
         }
 
@@ -33,7 +33,7 @@ const { Console } = require('console');
             yTests.push(parseInt(values[0]));
             xTests[i] = [];
             for(let j = 1; j < values.length; j++){
-                xTests[i].push(parseInt(values[j]));
+                xTests[i].push((parseInt(values[j])-127)/127);
             }
         }
 
