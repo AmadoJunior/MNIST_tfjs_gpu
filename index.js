@@ -76,6 +76,9 @@ const { Console } = require('console');
         const history = await model.fit(xs, ys, {
             batchSize: 128,
             epochs: numberOfEpochs,
+            //We pass some validation for
+            //monitoring validation loss and metrics
+            //at the end of each epoch
             validationData: [xsTests, ysTests],
             callbacks: {
                 onEpochEnd: async (epoch, logs) => {
@@ -85,6 +88,12 @@ const { Console } = require('console');
                 }
             }
         });
+
+
+        //Evaluate
+        console.log("Evaluating Model...");
+        const results = model.evaluate(x_test, y_test, batch_size=128)
+        console.log("Test Lost, Test Acc: " + results);
 
         //Save Model
         let save = await model.save('file://myModel1');
@@ -117,7 +126,7 @@ const { Console } = require('console');
             }
         }
         console.log("Accuracy: " + correct/(correct+wrong));
-        console.log("Correct: " + correct + "Wrong: " + wrong);
+        console.log("Correct: " + correct + "\nWrong: " + wrong);
     }
 
     //Get Data
@@ -126,7 +135,7 @@ const { Console } = require('console');
     // console.log(ys.dataSync());
     // console.log(ysTests.dataSync());
 
-    await trainModel(xs, ys, xsTests, ysTests);
+    //await trainModel(xs, ys, xsTests, ysTests);
 
     await doPrediction(xsTests, ysTests);
 
