@@ -1,0 +1,14 @@
+{
+  "name": "mnist",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "description": "",
+  "dependencies": {
+    "@tensorflow/tfjs-node-gpu": "^3.13.0",
+    "express": "^4.17.3"
+  }
+}
