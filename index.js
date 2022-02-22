@@ -54,7 +54,7 @@ const { Console } = require('console');
         //Define Vars
         const model = tf.sequential();
         const learningRate = .01;
-        const numberOfEpochs = 100;
+        const numberOfEpochs = 50;
         const optimizer = tf.train.adam(learningRate);
         //console.log(xs.shape);
         //console.log(ys.shape);
@@ -92,7 +92,7 @@ const { Console } = require('console');
 
         //Evaluate
         console.log("Evaluating Model...");
-        const results = model.evaluate(x_test, y_test, batch_size=128)
+        const results = model.evaluate(xsTests, ysTests, batch_size=128)
         console.log("Test Lost, Test Acc: " + results);
 
         //Save Model
@@ -135,8 +135,8 @@ const { Console } = require('console');
     // console.log(ys.dataSync());
     // console.log(ysTests.dataSync());
 
-    //await trainModel(xs, ys, xsTests, ysTests);
+    await trainModel(xs, ys, xsTests, ysTests);
 
-    await doPrediction(xsTests, ysTests);
+    //await doPrediction(xsTests, ysTests);
 
 })();
