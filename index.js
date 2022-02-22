@@ -23,7 +23,7 @@ const { Console } = require('console');
             yTrains.push(parseInt(values[0]));
             xTrains[i] = [];
             for(let j = 1; j < values.length; j++){
-                xTrains[i].push((parseInt(values[j])-127)/127);
+                xTrains[i].push((parseInt(values[j]))/255);
             }
         }
 
@@ -33,7 +33,7 @@ const { Console } = require('console');
             yTests.push(parseInt(values[0]));
             xTests[i] = [];
             for(let j = 1; j < values.length; j++){
-                xTests[i].push((parseInt(values[j])-127)/127);
+                xTests[i].push((parseInt(values[j]))/255);
             }
         }
 
@@ -54,7 +54,7 @@ const { Console } = require('console');
         //Define Vars
         const model = tf.sequential();
         const learningRate = .01;
-        const numberOfEpochs = 50;
+        const numberOfEpochs = 100;
         const optimizer = tf.train.adam(learningRate);
         //console.log(xs.shape);
         //console.log(ys.shape);

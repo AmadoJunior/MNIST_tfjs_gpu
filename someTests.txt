@@ -1,0 +1,25 @@
+# Not Normalized
+# Epochs: 50
+# Tensors: 18
+Evaluating Model...
+Test Lost, Test Acc: Tensor
+    0.49525102972984314,Tensor
+    0.859499990940094
+{
+
+# Normalized
+# Epochs: 50
+# Tensors: 18
+Test Lost, Test Acc: Tensor
+    0.46986085176467896,Tensor
+    0.879800021648407
+{
+
+# Normalized
+# Epochs: 100
+# Tensors: 18
+
+
+# Not Normalized
+# Epochs: 100
+# Tensors: 18
