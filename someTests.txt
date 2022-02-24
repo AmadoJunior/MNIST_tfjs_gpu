@@ -10,3 +10,8 @@ Test Lost, Test Acc: Tensor
 # Not Normalized
 # Epochs: 100
 # Tensors: 18
+
+Test Lost, Test Acc: Tensor
+    0.29204437136650085,Tensor
+    0.9710999727249146
+{
