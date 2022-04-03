@@ -44,7 +44,7 @@ function getMNISTData2D(){
     });
 }
 
-function getMNISTData3D(){
+function getMNISTData4D(){
     //Load Data
     var trainData  = fs.readFileSync(__dirname + '\\MNISTData\\mnist_train.csv', {encoding: "utf8"}).toString().split('\n').slice(1);
     var testData = fs.readFileSync(__dirname + '\\MNISTData\\mnist_test.csv', {encoding: "utf8"}).toString().split('\n').slice(1);
@@ -55,29 +55,31 @@ function getMNISTData3D(){
 
     // console.log(testData.length);
     // console.log(trainData.length);
-
+    console.log(trainData.length);
     for(let i = 0; i < trainData.length-1; i++){
         let values = trainData[i].split(",");
-        //console.log(values.length);
-        yTrains.push(parseInt(values[0]));
+        yTrains.push(parseInt(values.shift()));
+        
         xTrains[i] = [];
+
         for(let k = 0; k < 28; k++){
             xTrains[i].push([]);
             for(let h = 0; h < 28; h++){
-                xTrains[i][k].push((parseInt(values[k+h]))/255);
+                xTrains[i][k].push([(parseInt(values[(k*28)+h]))/255]);
             }
         }
+        
     }
 
     for(let i = 0; i < testData.length-1; i++){
         let values = testData[i].split(",");
         //console.log(values.length);
-        yTests.push(parseInt(values[0]));
+        yTests.push(parseInt(values.shift()));
         xTests[i] = [];
         for(let k = 0; k < 28; k++){
             xTests[i].push([]);
             for(let h = 0; h < 28; h++){
-                xTests[i][k].push((parseInt(values[k+h]))/255);
+                xTests[i][k].push([(parseInt(values[(k*28)+h]))/255]);
             }
         }
     }
@@ -85,9 +87,9 @@ function getMNISTData3D(){
     //console.log(xTrains);
     //console.log(yTrains);
     return tf.tidy(() => {
-        const xs = tf.tensor3d(xTrains);
+        const xs = tf.tensor4d(xTrains);
         const ys = tf.oneHot(tf.tensor1d(yTrains).toInt(), 10);
-        const xsTests = tf.tensor3d(xTests);
+        const xsTests = tf.tensor4d(xTests);
         const ysTests = tf.oneHot(tf.tensor1d(yTests).toInt(), 10);
         return [xs, ys, xsTests, ysTests];
     });
@@ -95,5 +97,5 @@ function getMNISTData3D(){
 
 module.exports = {
     getMNISTData2D,
-    getMNISTData3D
+    getMNISTData4D
 }
