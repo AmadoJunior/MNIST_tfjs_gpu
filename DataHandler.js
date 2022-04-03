@@ -44,7 +44,7 @@ function getMNISTData2D(){
     });
 }
 
-function getMNISTData4D(){
+function getMNISTData3D(){
     //Load Data
     var trainData  = fs.readFileSync(__dirname + '\\MNISTData\\mnist_train.csv', {encoding: "utf8"}).toString().split('\n').slice(1);
     var testData = fs.readFileSync(__dirname + '\\MNISTData\\mnist_test.csv', {encoding: "utf8"}).toString().split('\n').slice(1);
@@ -95,5 +95,5 @@ function getMNISTData4D(){
 
 module.exports = {
     getMNISTData2D,
-    getMNISTData4D
+    getMNISTData3D
 }

@@ -1,4 +1,4 @@
-const {getMNISTData4D} = require("./DataHandler");
+const {getMNISTData3D} = require("./DataHandler");
 const tf = require('@tensorflow/tfjs-node-gpu');
 
 //Methods
@@ -82,7 +82,7 @@ async function trainModel(xs, ys, xsTests, ysTests) {
 //Main
 (async () => {
     //Get Data
-    const [xs, ys, xsTests, ysTests] = getMNISTData4D();
+    const [xs, ys, xsTests, ysTests] = getMNISTData3D();
 
     // console.log(ys.dataSync());
     // console.log(ysTests.dataSync());
